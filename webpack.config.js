@@ -6,15 +6,12 @@ var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
   entry: {
-    app: APP_DIR + '/main.jsx',
+    app: APP_DIR + '/index.jsx',
     vendor: APP_DIR + '/vendor.jsx'
   },
   output: {
     path: BUILD_DIR,
     filename: 'app.bundle.js'
-  },
-  resolve: {
-    extensions: ['', '.jsx']
   },
   module: {
     loaders: [
