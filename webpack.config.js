@@ -20,8 +20,8 @@ var config = {
   },
   module: {
     loaders: [
-      {test: /\.css$/, loader: 'style!css'},
-      {test: /\.jsx?/, include: APP_DIR, loader: 'babel'}
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      { test: /\.jsx?/, include: APP_DIR, loader: 'babel' }
     ]
   },
   plugins: [

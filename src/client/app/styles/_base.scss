@@ -1,0 +1,36 @@
+html, body {
+  background: $light;
+  font: 100% arial;
+}
+
+
+// input
+//--------------
+input[type=search] {
+  border: none;
+  border-bottom: 1px solid #555;
+  padding: 10px;
+}
+
+button {
+  background: $action;
+  border: none;
+  border-radius: 3px;
+  color: $button-text-color;
+  font-size: 0.9em;
+  margin: 5px;
+  padding: 10px;
+}
+
+
+// List
+//--------------
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
