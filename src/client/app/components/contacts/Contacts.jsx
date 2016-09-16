@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import {SearchBar, ContactsList} from 'components/contacts';
+import { SearchBar, ContactsList } from 'components/contacts';
 
 
-export default class Contacts extends Component {
+class Contacts extends Component {
   render () {
     return (
       <div>
@@ -17,3 +17,5 @@ export default class Contacts extends Component {
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object)
 };
+
+export default Contacts;

@@ -14,10 +14,10 @@ export default class Likes extends Component {
 
   render () {
     return (
-      <div>
+      <section>
         Likes : <span>{this.state.likesCount}</span>
         <div><button onClick={this.onLike}>Like Me</button></div>
-      </div>
+      </section>
     );
   }
 }
