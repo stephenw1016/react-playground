@@ -1,14 +1,14 @@
 {
   "name": "React-Playground",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Messing around with React and related libraries.",
   "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
-  "author": "",
+  "author": "https://twitter.com/stevoscript",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.14.0",
