@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { addTodo } from 'actions/todo.actions';
+import TodoService from 'service/todo.service';
 
+let todoService = new TodoService();
 
 let AddTodo = ({ dispatch }) => {
   let input;
@@ -11,10 +12,12 @@ let AddTodo = ({ dispatch }) => {
     <div>
       <form onSubmit={e => {
         e.preventDefault();
-        if (!input.value.trim()) {
+        let todoText = input.value.trim();
+        if (!todoText) {
           return;
         }
-        dispatch(addTodo(input.value));
+        todoService.add(todoText);
+        dispatch(addTodo(todoText));
         input.value = '';
       }}>
         <input type="text" placeholder="Task Name" ref={node => {
