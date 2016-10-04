@@ -57,6 +57,23 @@ class IndexedDBService {
     unsubscribe();
   }
 
+  get (key) {
+    let storeName = this.config.storeName;
+    return Observable.create((observer) => {
+      this.open().subscribe((db) => {
+        let transaction = db.transaction([storeName], 'readonly');
+        let os = transaction.objectStore(storeName);
+        let getRequest = os.get(key);
+        getRequest.onsuccess = (e) => {
+          observer.onNext(e.target.result);
+        };
+        getRequest.onerror= (e) => {
+          observer.onError('could not complete get request: ', e);
+        };
+      });
+    }).publish().refCount();
+  }
+
   getCursor (storeName) {
     return Observable.create((observer) => {
       this.open().subscribe((db) => {
@@ -67,6 +84,22 @@ class IndexedDBService {
     }).publish().refCount();
   }
 
+  update (todo) {
+    let storeName = this.config.storeName;
+    return Observable.create((observer) => {
+      this.open().subscribe((db) => {
+        let transaction = db.transaction([storeName], 'readwrite');
+        let os = transaction.objectStore(storeName);
+        let getRequest = os.put(todo);
+        getRequest.onsuccess = (e) => {
+          observer.onNext(e.target.result);
+        };
+        getRequest.onerror= (e) => {
+          observer.onError('could not complete get request: ', e);
+        };
+      });
+    }).publish().refCount();
+  }
 }
 
 export default IndexedDBService;

@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 
-import toggleTodo from 'actions/todo.actions';
+import { toggleTodo } from 'actions/todo.actions';
 import { TodoList } from 'components/todo';
+import TodoService from 'service/todo.service';
 
+let todoService = new TodoService();
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -25,6 +27,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTodoClick: (id) => {
       dispatch(toggleTodo(id));
+      todoService.get(id + 1).subscribe(todo => {
+        todoService.update(todo);
+      });
     }
   };
 };
