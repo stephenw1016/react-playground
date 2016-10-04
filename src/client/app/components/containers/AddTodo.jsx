@@ -9,7 +9,7 @@ let AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
+    <div className="todo-input">
       <form onSubmit={e => {
         e.preventDefault();
         let todoText = input.value.trim();
@@ -20,10 +20,10 @@ let AddTodo = ({ dispatch }) => {
         dispatch(addTodo(todoText));
         input.value = '';
       }}>
-        <input type="text" placeholder="Task Name" ref={node => {
+        <input className="add-todo-input" type="text" placeholder="Task Name" ref={node => {
           input = node;
         }} />
-        <button type="submit">Add Todo</button>
+        <button className="add-todo-button" type="submit">Add Todo</button>
       </form>
     </div>
   );

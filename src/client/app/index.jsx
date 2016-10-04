@@ -28,11 +28,11 @@ store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_ALL));
 class App extends Component {
   render () {
     return (
-      <div>
+      <div className="todo-app">
+        <h1>Reactive Todos (w/IndexedDB & Rx.js)</h1>
         <AddTodo />
         <VisibleTodoList />
         <Footer />
-        <Likes />
       </div>
     );
   }

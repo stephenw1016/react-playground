@@ -4,11 +4,11 @@ import { Todo } from 'components/todo';
 
 
 const TodoList = ({ todos, onTodoClick }) => (
-  <ol>
+  <ul className="todo-list">
     {todos.map(todo =>
       <Todo key={todo.id} {...todo} onClick={() => onTodoClick} />
     )}
-  </ol>
+  </ul>
 );
 
 TodoList.propTypes = {

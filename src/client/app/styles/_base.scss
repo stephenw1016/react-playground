@@ -1,12 +1,35 @@
 html, body {
-  background: $light;
+  background: $ghost;
+  box-sizing: border-box;
   font: 100% arial;
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: $focus;
+  font-weight: lighter;
+  text-align: center;
+}
+
+div, main, section {
+  box-sizing: border-box;
 }
 
 main {
+  height: 100%;
   margin: 0 auto;
   padding: 10px;
+}
+
+a {
+  color: $light-action;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
 }
 
 section,
@@ -16,23 +39,20 @@ section,
 
 // input
 //--------------
-input {
-  &[type=search],
-  &[type=text] {
-    border: none;
-    border-bottom: 1px solid #777;
-    padding: 10px;
+input, button {
+  &:focus {
+    outline: none;
   }
 }
 
 button {
-  background: $action;
+  background: transparent;
   border: none;
-  border-radius: 5px;
   color: $button-text-color;
   font-size: 0.9em;
-  margin: 5px;
-  padding: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 
