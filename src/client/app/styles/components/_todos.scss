@@ -59,7 +59,7 @@
     padding: 15px;
     transition: background-color .15s ease-in;
     &:hover {
-      background-color: darken($light, 4%);
+      background-color: darken($light, 2%);
     }
     span {
       display: inline-block;
@@ -83,6 +83,31 @@
   span, a {
     display: inline-block;
     margin: 0 2px;
+  }
+}
+
+.todo-actions {
+  margin-left: auto;
+}
+
+.todo-action {
+  font-size: 0.6em;
+  height: 24px;
+  width: 24px;
+  &.todo-complete {
+    background: url('/react-playground/src/client/assets/svg/ic_check_box_black_24px.svg') no-repeat center;
+    margin-right: 15px;
+    opacity: 0.5;
+  }
+  &.todo-incomplete {
+    background: url('/react-playground/src/client/assets/svg/ic_check_box_outline_blank_black_24px.svg') no-repeat center;
+    margin-right: 15px;
+    opacity: 0.5;
+  }
+  &.todo-remove {
+    background: url('/react-playground/src/client/assets/svg/ic_close_black_24px.svg') no-repeat center;
+    margin: 0 10px;
+    opacity: 0.3;
   }
 }
 

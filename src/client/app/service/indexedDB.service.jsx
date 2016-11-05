@@ -1,6 +1,9 @@
 import { Observable } from 'rx';
 
 
+const READ_WRITE = 'readwrite';
+const READ_ONLY = 'readonly';
+
 class IndexedDBService {
   constructor(tableName, version, config) {
     this.tableName = tableName;
@@ -8,13 +11,12 @@ class IndexedDBService {
     this.config = config;
   };
 
-
-  isSupported () {
+  static isSupported () {
     return 'indexedDB' in window;
   }
 
   open () {
-    let isNotSupported = !this.isSupported();
+    let isNotSupported = !IndexedDBService.isSupported();
     let tableName = this.tableName;
     let version = this.version;
     let config = this.config;
@@ -50,7 +52,7 @@ class IndexedDBService {
   add (value) {
     let storeName = this.config.storeName;
     let unsubscribe = this.open().subscribe((db) => {
-      let transaction = db.transaction([storeName], 'readwrite');
+      let transaction = db.transaction([storeName], READ_WRITE);
       let os = transaction.objectStore(storeName);
       os.add(todo);
     });
@@ -61,7 +63,7 @@ class IndexedDBService {
     let storeName = this.config.storeName;
     return Observable.create((observer) => {
       this.open().subscribe((db) => {
-        let transaction = db.transaction([storeName], 'readonly');
+        let transaction = db.transaction([storeName], READ_ONLY);
         let os = transaction.objectStore(storeName);
         let getRequest = os.get(key);
         getRequest.onsuccess = (e) => {
@@ -77,7 +79,7 @@ class IndexedDBService {
   getCursor (storeName) {
     return Observable.create((observer) => {
       this.open().subscribe((db) => {
-        let transaction = db.transaction([storeName], 'readonly');
+        let transaction = db.transaction([storeName], READ_ONLY);
         let os = transaction.objectStore(storeName);
         observer.onNext(os.openCursor());
       });
@@ -88,7 +90,7 @@ class IndexedDBService {
     let storeName = this.config.storeName;
     return Observable.create((observer) => {
       this.open().subscribe((db) => {
-        let transaction = db.transaction([storeName], 'readwrite');
+        let transaction = db.transaction([storeName], READ_WRITE);
         let os = transaction.objectStore(storeName);
         let getRequest = os.put(todo);
         getRequest.onsuccess = (e) => {

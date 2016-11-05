@@ -2,9 +2,12 @@ import React, { PropTypes } from 'react';
 
 
 const Todo = ({ onClick, completed, text, id}) => (
-  <li className="todo-list-item" onClick={onClick}>
-    <span className="todo-id">{id}</span>
+  <li id={'todo-' + id} className="todo-list-item">
+    <button className={'button todo-action ' + (completed ? 'todo-complete' : 'todo-incomplete')} onClick={onClick}></button>
     <span className="todo-text" style={{textDecoration: completed ? 'line-through' : 'none'}}>{text}</span>
+    <span className="todo-actions">
+      <button className="button todo-action todo-remove"></button>
+    </span>
   </li>
 );
 
