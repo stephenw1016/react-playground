@@ -17,9 +17,9 @@ let store = createStore(todoApp);
 let todoService = new TodoService();
 
 todoService.getAll().subscribe((todo) => {
-  store.dispatch(addTodo(todo.text));
+  store.dispatch(addTodo(todo));
   if (todo.completed) {
-    store.dispatch(toggleTodo(todo.id - 1));
+    store.dispatch(toggleTodo(todo.id));
   }
 });
 

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { toggleTodo } from 'actions/todo.actions';
+import { removeTodo } from 'actions/todo.actions';
 import { TodoList } from 'components/todo';
 import TodoService from 'service/todo.service';
 
@@ -25,11 +26,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTodoClick: (id) => {
+    onToggle: (id) => {
       dispatch(toggleTodo(id));
       todoService.get(id + 1).subscribe(todo => {
         todoService.update(todo);
       });
+    },
+    onRemove: (id) => {
+      dispatch(removeTodo(id));
+      todoService.remove(id);
     }
   };
 };
